@@ -2,11 +2,15 @@ package br.com.qpainformatica.qpabbb.domain.network;
 
 
 
+import org.json.JSONObject;
+
 import br.com.qpainformatica.qpabbb.BuildConfig;
+import br.com.qpainformatica.qpabbb.domain.model.Page;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 import retrofit.http.GET;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 public class APIClient {
@@ -17,8 +21,7 @@ public class APIClient {
 
         if (REST_ADAPTER == null) {
             REST_ADAPTER = new RestAdapter.Builder()
-                    .setEndpoint(BuildConfig.BASE_URL +
-                            "v1")
+                    .setEndpoint(BuildConfig.BASE_URL)
 
                     .setLogLevel((BuildConfig.DEBUG) ?
                             RestAdapter.LogLevel.FULL : RestAdapter.LogLevel.NONE)
@@ -31,8 +34,8 @@ public class APIClient {
         createAdapterIfNeeded();
     }
 
-    public GetShots getShots() {
-        return REST_ADAPTER.create(GetShots.class);
+    public GetPopularShots getShots() {
+        return REST_ADAPTER.create(GetPopularShots.class);
     }
 
     public GetShotDetail getShotDetail() {
@@ -40,18 +43,18 @@ public class APIClient {
     }
 
 
-    public interface GetShots {
-        @GET("/XXX") void getWith(
-                @Query("page") String page,
-                Callback<String> callback
+    public interface GetPopularShots {
+        @GET("/shots/popular")
+        Page getWith(
+                @Query("page") int pageNumber
         );
     }
 
 
     public interface GetShotDetail {
-        @GET("/YYY")
-        String with(
-                @Query("ZZZZ") String shot //TODO change this
+        @GET("/shots/{shot}")
+        JSONObject getWith(
+                @Path("shot") String shot
         );
     }
 

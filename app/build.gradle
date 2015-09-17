@@ -22,13 +22,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-            buildConfigField "String","BASE_URL","\"https://api.dribbble.com/\""
+            buildConfigField "String","BASE_URL","\"https://api.dribbble.com\""
         }
 
         debug {
             applicationIdSuffix ".debug"
             versionNameSuffix "-debug"
-            buildConfigField "String","BASE_URL","\"https://api.dribbble.com/\""
+            buildConfigField "String","BASE_URL","\"https://api.dribbble.com\""
         }
 
         android.applicationVariants.all { variant ->

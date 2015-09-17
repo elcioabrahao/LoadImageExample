@@ -2,15 +2,20 @@ package br.com.qpainformatica.qpabbb.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.paging.listview.PagingListView;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.qpainformatica.qpabbb.R;
+import br.com.qpainformatica.qpabbb.domain.model.Page;
+import br.com.qpainformatica.qpabbb.domain.network.APIClient;
 import br.com.qpainformatica.qpabbb.ui.adapters.MyPagingAdaper;
 
 import br.com.qpainformatica.qpabbb.domain.tasks.SafeAsyncTask;
@@ -25,6 +30,7 @@ public class MainActivity extends Activity {
     private List<String> thirdList;
 
     private int pager = 0;
+    private int currentPage = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +139,12 @@ public class MainActivity extends Activity {
                     break;
             }
             Thread.sleep(3000);
+
+
+            Page myPage = new APIClient().getShots().getWith(currentPage);
+
+            Log.d("JSON", "Number of shots: "+myPage.getShots().size());
+
             return result;
         }
 
