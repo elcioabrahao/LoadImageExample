@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/exploded-aar/com.github.nicolasjafelle/paginglistview/1.2/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="813900fb2a98c32193da6f120642e407f56af59b">
+        <dex dex="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/pre-dexed/debug/classes-45156725b2f83ffde9b814edc51f633348314f74.jar" />
+    </item>
+    <item
+        jar="/home/eabrahao/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.0.0/2534c458682c73f5b9871131ab3098d3f987ca3/okio-1.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="02534c458682c73f5b9871131ab3098d3f987ca3">
+        <dex dex="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/pre-dexed/debug/okio-1.0.0-f49a5691abcb6bca4151b126836e8476e5cb0a2b.jar" />
+    </item>
+    <item
+        jar="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/pre-dexed/debug/classes-67a65efd125b14359dbda3f35a97fd1ab7afa4d6.jar" />
+    </item>
+    <item
+        jar="/home/eabrahao/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.0.0/4c8d1536dba3812cc1592090dc20c47a4ed3c35e/okhttp-2.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e">
+        <dex dex="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/pre-dexed/debug/okhttp-2.0.0-bca5b7e33e1387c5009e897611ff375cd245726a.jar" />
+    </item>
+    <item
+        jar="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-769f07e48d7a700bf12b9f9a4b4cc40fde6a4bd9.jar" />
+    </item>
+    <item
+        jar="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/pre-dexed/debug/classes-73010e82cdec53e3b8f517f842bfae5d0aa74d05.jar" />
+    </item>
+    <item
+        jar="/home/eabrahao/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-urlconnection/2.0.0/afe8399d352713b66e597e9670c741d1e60ae923/okhttp-urlconnection-2.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="afe8399d352713b66e597e9670c741d1e60ae923">
+        <dex dex="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-2.0.0-25aa201a0c6db8d9dab5c894fcd8c1d9261efbe8.jar" />
+    </item>
+    <item
+        jar="/home/eabrahao/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/pre-dexed/debug/gson-2.3.1-f34ac911f710862723bcfea86f0b0b0a5b4a0655.jar" />
+    </item>
+    <item
+        jar="/home/eabrahao/android/android-sdk-linux/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-7754447a39f37708894a37c69c32211dfe3ab566.jar" />
+    </item>
+    <item
+        jar="/home/eabrahao/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/home/eabrahao/AndroidStudioProjects/desafio-android/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0-464cd919c36ddf26c917006701384ad2976724e1.jar" />
+    </item>
+
+</items>
