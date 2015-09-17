@@ -1,4 +1,4 @@
-package br.com.qpainformatica.dribbble.domain.tasks;
+package br.com.qpainformatica.qpabbb.domain.tasks;
 
 import android.os.Handler;
 import android.os.Looper;

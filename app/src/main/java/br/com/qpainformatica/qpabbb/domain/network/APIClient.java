@@ -1,7 +1,8 @@
-package br.com.qpainformatica.dribbble.domain.network;
+package br.com.qpainformatica.qpabbb.domain.network;
 
 
-import br.com.qpainformatica.dribbble.BuildConfig;
+
+import br.com.qpainformatica.qpabbb.BuildConfig;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;

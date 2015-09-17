@@ -1,4 +1,4 @@
-package br.com.qpainformatica.dribbble.ui.adapters;
+package br.com.qpainformatica.qpabbb.ui.adapters;
 
 import android.R;
 import android.view.LayoutInflater;

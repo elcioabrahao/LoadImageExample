@@ -1,4 +1,4 @@
-package br.com.qpainformatica.dribbble.ui;
+package br.com.qpainformatica.qpabbb.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,9 +10,10 @@ import com.paging.listview.PagingListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.qpainformatica.dribbble.ui.adapters.MyPagingAdaper;
-import br.com.qpainformatica.dribbble.R;
-import br.com.qpainformatica.dribbble.domain.tasks.SafeAsyncTask;
+import br.com.qpainformatica.qpabbb.R;
+import br.com.qpainformatica.qpabbb.ui.adapters.MyPagingAdaper;
+
+import br.com.qpainformatica.qpabbb.domain.tasks.SafeAsyncTask;
 
 public class MainActivity extends Activity {
 
