@@ -1,0 +1,9 @@
+<resources>
+
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">PagingListView Sample</string>
+    <string name="refresh">Refresh</string>
+    <string name="loading_countries">Loading countries&#8230;</string>
+</resources>

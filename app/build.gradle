@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+android {
+    lintOptions {
+        abortOnError false
+        warningsAsErrors false
+        ignoreWarnings true
+    }
+
+    compileSdkVersion 23
+    buildToolsVersion "23.0.0"
+
+    defaultConfig {
+        applicationId "br.com.qpainformatica.dribbble"
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            buildConfigField "String","BASE_URL","\"https://api.dribbble.com/\""
+        }
+
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            buildConfigField "String","BASE_URL","\"https://api.dribbble.com/\""
+        }
+
+        android.applicationVariants.all { variant ->
+            variant.outputs.each  { output ->
+                output.outputFile = new File(output.outputFile.parent, output.outputFile.name.replace("release", "v" + defaultConfig.versionName + "-PROD").replace("debug", "v" + defaultConfig.versionName + "-HOMOLOG"))
+
+            }
+        }
+
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.github.nicolasjafelle:paginglistview:1.2'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
+    compile 'com.squareup.okhttp:okhttp:2.0.0'
+}
