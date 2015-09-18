@@ -8,29 +8,27 @@ import android.view.MenuItem;
 
 import com.paging.listview.PagingListView;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.qpainformatica.qpabbb.R;
 import br.com.qpainformatica.qpabbb.domain.model.Page;
+import br.com.qpainformatica.qpabbb.domain.model.Shot;
 import br.com.qpainformatica.qpabbb.domain.network.APIClient;
-import br.com.qpainformatica.qpabbb.ui.adapters.MyPagingAdaper;
-
 import br.com.qpainformatica.qpabbb.domain.tasks.SafeAsyncTask;
+import br.com.qpainformatica.qpabbb.ui.adapters.ShotAdapter;
 
 public class MainActivity extends Activity {
 
     private PagingListView listView;
-    private MyPagingAdaper adapter;
+    private ShotAdapter adapter;
 
     private List<String> firstList;
     private List<String> secondList;
     private List<String> thirdList;
 
-    private int pager = 0;
-    private int currentPage = 1;
+    private int pager = 1;
+    private int maxPageSize = 99999;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +36,15 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         listView = (PagingListView) findViewById(R.id.paging_list_view);
-        adapter = new MyPagingAdaper();
+        adapter = new ShotAdapter(this);
 
-        initData();
 
         listView.setAdapter(adapter);
         listView.setHasMoreItems(true);
         listView.setPagingableListener(new PagingListView.Pagingable() {
             @Override
             public void onLoadMoreItems() {
-                if (pager < 3) {
+                if (pager < maxPageSize) {
                     new CountryAsyncTask().execute();
                 } else {
                     listView.onFinishLoading(false, null);
@@ -80,68 +77,18 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void initData() {
-        firstList = new ArrayList<String>();
-        firstList.add("Afghanistan");
-        firstList.add("Albania");
-        firstList.add("Algeria");
-        firstList.add("Andorra");
-        firstList.add("Angola");
-        firstList.add("Antigua and Barbuda");
-        firstList.add("Argentina");
-        firstList.add("Armenia");
-        firstList.add("Aruba");
-        firstList.add("Australia");
-        firstList.add("Austria");
-        firstList.add("Azerbaijan");
 
-        secondList = new ArrayList<String>();
-        secondList.add("Bahamas, The");
-        secondList.add("Bahrain");
-        secondList.add("Bangladesh");
-        secondList.add("Barbados");
-        secondList.add("Belarus");
-        secondList.add("Belgium");
-        secondList.add("Belize");
-        secondList.add("Benin");
-        secondList.add("Bhutan");
-        secondList.add("Bolivia");
-        secondList.add("Bosnia and Herzegovina");
-        secondList.add("Botswana");
-        secondList.add("Brazil");
-        secondList.add("Brunei");
-        secondList.add("Bulgaria");
-        secondList.add("Burkina Faso");
-        secondList.add("Burma");
-        secondList.add("Burundi");
 
-        thirdList = new ArrayList<String>();
-        thirdList.add("Denmark");
-        thirdList.add("Djibouti");
-        thirdList.add("Dominica");
-        thirdList.add("Dominican Republic");
-    }
+    private class CountryAsyncTask extends SafeAsyncTask<List<Shot>> {
 
-    private class CountryAsyncTask extends SafeAsyncTask<List<String>> {
 
         @Override
-        public List<String> call() throws Exception {
-            List<String> result = null;
-            switch (pager) {
-                case 0:
-                    result = firstList;
-                    break;
-                case 1:
-                    result = secondList;
-                    break;
-                case 2:
-                    result = thirdList;
-                    break;
-            }
-            Thread.sleep(3000);
+        public List<Shot> call() throws Exception {
 
 
-            Page myPage = new APIClient().getShots().getWith(currentPage);
+            Page myPage = new APIClient().getShots().getWith(pager);
+            maxPageSize = myPage.getPages();
+            List<Shot> result = myPage.getShots();
 
             Log.d("JSON", "Number of shots: "+myPage.getShots().size());
 
@@ -149,7 +96,7 @@ public class MainActivity extends Activity {
         }
 
         @Override
-        protected void onSuccess(List<String> newItems) throws Exception {
+        protected void onSuccess(List<Shot> newItems) throws Exception {
             super.onSuccess(newItems);
             pager++;
             listView.onFinishLoading(true, newItems);

@@ -6,11 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
+import com.paging.listview.PagingBaseAdapter;
+import com.squareup.picasso.Picasso;
 
 import br.com.qpainformatica.qpabbb.R;
 import br.com.qpainformatica.qpabbb.domain.model.Shot;
@@ -18,29 +18,33 @@ import br.com.qpainformatica.qpabbb.domain.model.Shot;
 /**
  * Created by eabrahao on 17/09/15.
  */
-public class ShotAdapter extends BaseAdapter {
+public class ShotAdapter extends PagingBaseAdapter<Shot> {
 
     Context context;
-    List<Shot> shotItems;
+    //List<Shot> shotItems;
+    Picasso mPicasso;
+    LayoutInflater mLayoutInflater;
 
-    ShotAdapter(Context context, List<Shot> shotItems) {
-        this.context = context;
-        this.shotItems = shotItems;
+    public ShotAdapter(Context context) {
+        this.context=context;
+        this.mLayoutInflater = LayoutInflater.from(context);
+        this.mPicasso = Picasso.with(context);
     }
 
     @Override
     public int getCount() {
-        return shotItems.size();
+        return items.size();
     }
 
+
     @Override
-    public Object getItem(int position) {
-        return shotItems.get(position);
+    public Shot getItem(int position) { // << subclasses can use subtypes in overridden methods!
+        return items.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return shotItems.indexOf(getItem(position));
+        return position;
     }
 
     private class ViewHolder {
@@ -55,9 +59,10 @@ public class ShotAdapter extends BaseAdapter {
 
         ViewHolder holder = null;
 
-        LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+
+        mLayoutInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.shot_item, null);
+            convertView = mLayoutInflater.inflate(R.layout.shot_item, null);
             holder = new ViewHolder();
 
             holder.tvShotTitle = (TextView) convertView.findViewById(R.id.tvShotTitle);
@@ -68,16 +73,17 @@ public class ShotAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Shot row_pos = shotItems.get(position);
+        Shot row_pos = getItem(position);
 
         // TODO tirar isso
-//        Picasso.with(context)
-//                .load(row_pos.getItem_image_url())
-//                .into(holder.ivMenu);
-//
-//        holder.tvMenuHeader.setText(row_pos.getItem_header());
-//
-//        Log.e("Test", "headers:" + row_pos.getItem_header());
+
+        mPicasso.with(context)
+                .load(row_pos.getImage_400_url())
+                .into(holder.ivShot);
+
+        holder.tvShotTitle.setText(row_pos.getTitle());
+
+        Log.e("Test", "headers:" + row_pos.getTitle());
         return convertView;
     }
 
