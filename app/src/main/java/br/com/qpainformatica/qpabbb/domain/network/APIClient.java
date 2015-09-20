@@ -1,12 +1,9 @@
 package br.com.qpainformatica.qpabbb.domain.network;
 
 
-
-import org.json.JSONObject;
-
 import br.com.qpainformatica.qpabbb.BuildConfig;
 import br.com.qpainformatica.qpabbb.domain.model.Page;
-import retrofit.Callback;
+import br.com.qpainformatica.qpabbb.domain.model.Shot;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 import retrofit.http.GET;
@@ -53,8 +50,8 @@ public class APIClient {
 
     public interface GetShotDetail {
         @GET("/shots/{shot}")
-        JSONObject getWith(
-                @Path("shot") String shot
+        Shot getWith(
+                @Path("shot") long shot
         );
     }
 

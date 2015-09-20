@@ -1,10 +1,13 @@
 package br.com.qpainformatica.qpabbb.ui;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 
 import com.paging.listview.PagingListView;
 
@@ -17,17 +20,15 @@ import br.com.qpainformatica.qpabbb.domain.network.APIClient;
 import br.com.qpainformatica.qpabbb.domain.tasks.SafeAsyncTask;
 import br.com.qpainformatica.qpabbb.ui.adapters.ShotAdapter;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
     private PagingListView listView;
     private ShotAdapter adapter;
 
-    private List<String> firstList;
-    private List<String> secondList;
-    private List<String> thirdList;
-
     private int pager = 1;
     private int maxPageSize = 99999;
+    public static final String SHOT_DETAIL = "br.com.qpainformatica.qpabbb.shotDetail";
+    Intent intent;
 
 
     @Override
@@ -37,6 +38,7 @@ public class MainActivity extends Activity {
 
         listView = (PagingListView) findViewById(R.id.paging_list_view);
         adapter = new ShotAdapter(this);
+        intent = new Intent(this,ShotDetailActivity.class);
 
 
         listView.setAdapter(adapter);
@@ -45,12 +47,20 @@ public class MainActivity extends Activity {
             @Override
             public void onLoadMoreItems() {
                 if (pager < maxPageSize) {
-                    new CountryAsyncTask().execute();
+                    new PopularShotsAsyncTask().execute();
                 } else {
                     listView.onFinishLoading(false, null);
                 }
             }
         });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Shot shot = adapter.getItem(position);
+                intent.putExtra(SHOT_DETAIL,shot.getId());
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void clearData() {
@@ -78,8 +88,7 @@ public class MainActivity extends Activity {
     }
 
 
-
-    private class CountryAsyncTask extends SafeAsyncTask<List<Shot>> {
+    private class PopularShotsAsyncTask extends SafeAsyncTask<List<Shot>> {
 
 
         @Override

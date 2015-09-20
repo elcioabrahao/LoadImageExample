@@ -7,8 +7,7 @@
         android:id="@+id/ivShot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="center"
-        android:src="@drawable/ic_launcher" />
+        android:scaleType="center" />
 
     <TextView
         android:id="@+id/tvShotTitle"

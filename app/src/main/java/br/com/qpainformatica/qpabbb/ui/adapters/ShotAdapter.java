@@ -2,7 +2,6 @@ package br.com.qpainformatica.qpabbb.ui.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import br.com.qpainformatica.qpabbb.domain.model.Shot;
 public class ShotAdapter extends PagingBaseAdapter<Shot> {
 
     Context context;
-    //List<Shot> shotItems;
     Picasso mPicasso;
     LayoutInflater mLayoutInflater;
 
@@ -75,15 +73,11 @@ public class ShotAdapter extends PagingBaseAdapter<Shot> {
 
         Shot row_pos = getItem(position);
 
-        // TODO tirar isso
-
         mPicasso.with(context)
                 .load(row_pos.getImage_400_url())
                 .into(holder.ivShot);
 
         holder.tvShotTitle.setText(row_pos.getTitle());
-
-        Log.e("Test", "headers:" + row_pos.getTitle());
         return convertView;
     }
 

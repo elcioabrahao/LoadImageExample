@@ -1,9 +1,7 @@
 <resources>
+    <string name="action_settings">Configurações</string>
+    <string name="app_name">QPABBB - Desafio Android</string>
+    <string name="refresh">Recarregar</string>
+    <string name="title_activity_shot_detail">Detalhes do Shot</string>
 
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="app_name">PagingListView Sample</string>
-    <string name="refresh">Refresh</string>
-    <string name="loading_countries">Loading countries&#8230;</string>
 </resources>
