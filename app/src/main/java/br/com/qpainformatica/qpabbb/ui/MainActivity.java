@@ -3,7 +3,6 @@ package br.com.qpainformatica.qpabbb.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -98,8 +97,6 @@ public class MainActivity extends ActionBarActivity {
             Page myPage = new APIClient().getShots().getWith(pager);
             maxPageSize = myPage.getPages();
             List<Shot> result = myPage.getShots();
-
-            Log.d("JSON", "Number of shots: "+myPage.getShots().size());
 
             return result;
         }

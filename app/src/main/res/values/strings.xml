@@ -3,5 +3,8 @@
     <string name="app_name">QPABBB - Desafio Android</string>
     <string name="refresh">Recarregar</string>
     <string name="title_activity_shot_detail">Detalhes do Shot</string>
+    <string name="noDescription">Descrição indisponível</string>
+    <string name="noPlayerName">Nome do autor indisponível</string>
+    <string name="noShotTitle">Sem Título</string>
 
 </resources>

@@ -48,6 +48,7 @@ public class ShotAdapter extends PagingBaseAdapter<Shot> {
     private class ViewHolder {
         ImageView ivShot;
         TextView tvShotTitle;
+        TextView tvShotViewNumber;
     }
 
 
@@ -65,6 +66,7 @@ public class ShotAdapter extends PagingBaseAdapter<Shot> {
 
             holder.tvShotTitle = (TextView) convertView.findViewById(R.id.tvShotTitle);
             holder.ivShot = (ImageView) convertView.findViewById(R.id.ivShot);
+            holder.tvShotViewNumber = (TextView) convertView.findViewById(R.id.tvShotViewNumber);
 
             convertView.setTag(holder);
         } else {
@@ -73,11 +75,33 @@ public class ShotAdapter extends PagingBaseAdapter<Shot> {
 
         Shot row_pos = getItem(position);
 
-        mPicasso.with(context)
-                .load(row_pos.getImage_400_url())
-                .into(holder.ivShot);
+        if(row_pos.getImage_400_url()!=null && !row_pos.getImage_400_url().equals("")) {
+            mPicasso.with(context)
+                    .load(row_pos.getImage_400_url())
+                    .into(holder.ivShot);
+        }else{
 
-        holder.tvShotTitle.setText(row_pos.getTitle());
+            if(row_pos.getImage_url() !=null && !row_pos.getImage_url().equals("")) {
+                mPicasso.with(context)
+                        .load(row_pos.getImage_url())
+                        .into(holder.ivShot);
+            }else {
+                mPicasso.with(context)
+                        .load(R.drawable.sem_imagem)
+                        .into(holder.ivShot);
+            }
+        }
+        if(row_pos.getTitle()!=null) {
+            holder.tvShotTitle.setText(row_pos.getTitle());
+        }else{
+            holder.tvShotTitle.setText(context.getResources().getString(R.string.noShotTitle));
+        }
+        if(row_pos.getViews_count()>=0) {
+            holder.tvShotViewNumber.setText(String.valueOf(row_pos.getViews_count()));
+        }else{
+            holder.tvShotViewNumber.setText("0");
+        }
+
         return convertView;
     }
 
