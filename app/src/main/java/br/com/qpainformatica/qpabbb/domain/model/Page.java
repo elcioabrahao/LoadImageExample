@@ -1,5 +1,7 @@
 package br.com.qpainformatica.qpabbb.domain.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -8,7 +10,8 @@ import java.util.List;
 public class Page {
 
     private int page;
-    private int per_page;
+    @SerializedName("per_page")
+    private int perPage;
     private int pages;
     private int total;
     private List<Shot> shots;
@@ -16,10 +19,10 @@ public class Page {
     public Page() {
     }
 
-    public Page(List<Shot> shots, int page, int per_page, int pages, int total) {
+    public Page(List<Shot> shots, int page, int perPage, int pages, int total) {
         this.shots = shots;
         this.page = page;
-        this.per_page = per_page;
+        this.perPage = perPage;
         this.pages = pages;
         this.total = total;
     }
@@ -56,11 +59,11 @@ public class Page {
         this.pages = pages;
     }
 
-    public int getPer_page() {
-        return per_page;
+    public int getPerPage() {
+        return perPage;
     }
 
-    public void setPer_page(int per_page) {
-        this.per_page = per_page;
+    public void setPerPage(int per_page) {
+        this.perPage = perPage;
     }
 }

@@ -1,5 +1,7 @@
 package br.com.qpainformatica.qpabbb.domain.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by eabrahao on 17/09/15.
  */
@@ -10,23 +12,32 @@ public class Shot {
     private String description;
     private int height;
     private int width;
+
+
     private int likes_count;
     private int comments_count;
     private int rebounds_count;
     private String url;
-    private String short_url;
-    private int views_count;
-    private String rebound_source_id;
-    private String image_url;
-    private String image_teaser_url;
-    private String image_400_url;
+    @SerializedName("short_url")
+    private String shortUrl;
+    @SerializedName("views_count")
+    private int viewsCount;
+    @SerializedName("rebound_source_id")
+    private String reboundSourceId;
+    @SerializedName("image_url")
+    private String imageUrl;
+    @SerializedName("image_teaser_url")
+    private String imageTeaserUrl;
+    @SerializedName("image_400_url")
+    private String image400Url;
     private Player player;
-    private String created_at;
+    @SerializedName("created_at")
+    private String createdAt;
 
     public Shot() {
     }
 
-    public Shot(long id, String title, String description, int height, int width, int likes_count, int comments_count, int rebounds_count, String url, String short_url, int views_count, String rebound_source_id, String image_url, String image_teaser_url, String image_400_url, Player player, String created_at) {
+    public Shot(long id, String title, String description, int height, int width, int likes_count, int comments_count, int rebounds_count, String url, String shortUrl, int viewsCount, String reboundSourceId, String imageUrl, String imageTeaserUrl, String image400Url, Player player, String createdAt) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -36,22 +47,22 @@ public class Shot {
         this.comments_count = comments_count;
         this.rebounds_count = rebounds_count;
         this.url = url;
-        this.short_url = short_url;
-        this.views_count = views_count;
-        this.rebound_source_id = rebound_source_id;
-        this.image_url = image_url;
-        this.image_teaser_url = image_teaser_url;
-        this.image_400_url = image_400_url;
+        this.shortUrl = shortUrl;
+        this.viewsCount = viewsCount;
+        this.reboundSourceId = reboundSourceId;
+        this.imageUrl = imageUrl;
+        this.imageTeaserUrl = imageTeaserUrl;
+        this.image400Url = image400Url;
         this.player = player;
-        this.created_at = created_at;
+        this.createdAt = createdAt;
     }
 
-    public String getCreated_at() {
-        return created_at;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
     public long getId() {
@@ -126,52 +137,52 @@ public class Shot {
         this.url = url;
     }
 
-    public String getShort_url() {
-        return short_url;
+    public String getShortUrl() {
+        return shortUrl;
     }
 
-    public void setShort_url(String short_url) {
-        this.short_url = short_url;
+    public void setShortUrl(String shortUrl) {
+        this.shortUrl = shortUrl;
     }
 
-    public int getViews_count() {
-        return views_count;
+    public int getViewsCount() {
+        return viewsCount;
     }
 
-    public void setViews_count(int views_count) {
-        this.views_count = views_count;
+    public void setViewsCount(int viewsCount) {
+        this.viewsCount = viewsCount;
     }
 
-    public String getRebound_source_id() {
-        return rebound_source_id;
+    public String getReboundSourceId() {
+        return reboundSourceId;
     }
 
-    public void setRebound_source_id(String rebound_source_id) {
-        this.rebound_source_id = rebound_source_id;
+    public void setReboundSourceId(String reboundSourceId) {
+        this.reboundSourceId = reboundSourceId;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public String getImage_teaser_url() {
-        return image_teaser_url;
+    public String getImageTeaserUrl() {
+        return imageTeaserUrl;
     }
 
-    public void setImage_teaser_url(String image_teaser_url) {
-        this.image_teaser_url = image_teaser_url;
+    public void setImageTeaserUrl(String imageTeaserUrl) {
+        this.imageTeaserUrl = imageTeaserUrl;
     }
 
-    public String getImage_400_url() {
-        return image_400_url;
+    public String getImage400Url() {
+        return image400Url;
     }
 
-    public void setImage_400_url(String image_400_url) {
-        this.image_400_url = image_400_url;
+    public void setImage400Url(String image400Url) {
+        this.image400Url = image400Url;
     }
 
     public Player getPlayer() {

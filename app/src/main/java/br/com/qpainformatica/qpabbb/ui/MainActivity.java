@@ -3,21 +3,20 @@ package br.com.qpainformatica.qpabbb.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-
 import com.paging.listview.PagingListView;
-
-import java.util.List;
-
 import br.com.qpainformatica.qpabbb.R;
 import br.com.qpainformatica.qpabbb.domain.model.Page;
 import br.com.qpainformatica.qpabbb.domain.model.Shot;
 import br.com.qpainformatica.qpabbb.domain.network.APIClient;
-import br.com.qpainformatica.qpabbb.domain.tasks.SafeAsyncTask;
 import br.com.qpainformatica.qpabbb.ui.adapters.ShotAdapter;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -28,12 +27,14 @@ public class MainActivity extends ActionBarActivity {
     private int maxPageSize = 99999;
     public static final String SHOT_DETAIL = "br.com.qpainformatica.qpabbb.shotDetail";
     Intent intent;
+    private Callback<Page> callback;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        configureImageCallback();
 
         listView = (PagingListView) findViewById(R.id.paging_list_view);
         adapter = new ShotAdapter(this);
@@ -46,7 +47,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onLoadMoreItems() {
                 if (pager < maxPageSize) {
-                    new PopularShotsAsyncTask().execute();
+                    new APIClient().getShots().getPopularShotsWith(pager, callback);
                 } else {
                     listView.onFinishLoading(false, null);
                 }
@@ -87,26 +88,21 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    private class PopularShotsAsyncTask extends SafeAsyncTask<List<Shot>> {
+    private void configureImageCallback() {
 
+        callback = new Callback<Page>() {
 
-        @Override
-        public List<Shot> call() throws Exception {
+            @Override public void success(Page myPage, Response response) {
+                maxPageSize = myPage.getPages();
+                pager++;
+                listView.onFinishLoading(true, myPage.getShots());
+            }
 
+            @Override public void failure(RetrofitError error) {
 
-            Page myPage = new APIClient().getShots().getWith(pager);
-            maxPageSize = myPage.getPages();
-            List<Shot> result = myPage.getShots();
-
-            return result;
-        }
-
-        @Override
-        protected void onSuccess(List<Shot> newItems) throws Exception {
-            super.onSuccess(newItems);
-            pager++;
-            listView.onFinishLoading(true, newItems);
-        }
+                    Log.e("RETROFIT", "Error:"+error.getMessage());
+            }
+        };
     }
 
 }

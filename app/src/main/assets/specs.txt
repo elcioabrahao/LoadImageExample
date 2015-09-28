@@ -1,0 +1,9 @@
+Está utilizando uma versão antiga do OkHttp (2.0.0). Provavelmente olhou na documentação e pegou a versão de lá. OK
+Está incluindo também o okhttp-urlconnection desnecessariamente. OK
+- Não colocou nenhum teste
+- Não tratou a orientação corretamente (a cada vez que o celular muda a orientação, uma nova request é lançada)
+- Utilizou Retrofit para as requests, mas utilizou com AsyncTasks.... Ok Callback
+- Criou uma interface para cada chamada Rest do Retrofit OK
+- A padronização de nomenclatura não está muito clara. Utilizou caixa alta com snake case para valores não constantes. OK
+- Está reaproveitando a instância de RestAdapter, mas não a classe de wrapper que ele fez por cima. ??
+- A classe SafeAsyncTask, mas ela foi visívelmente copiada de outro lugar (inclusive com comentários Javadoc). ok

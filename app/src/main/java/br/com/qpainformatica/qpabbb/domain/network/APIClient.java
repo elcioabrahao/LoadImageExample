@@ -4,6 +4,7 @@ package br.com.qpainformatica.qpabbb.domain.network;
 import br.com.qpainformatica.qpabbb.BuildConfig;
 import br.com.qpainformatica.qpabbb.domain.model.Page;
 import br.com.qpainformatica.qpabbb.domain.model.Shot;
+import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 import retrofit.http.GET;
@@ -31,28 +32,24 @@ public class APIClient {
         createAdapterIfNeeded();
     }
 
-    public GetPopularShots getShots() {
-        return REST_ADAPTER.create(GetPopularShots.class);
-    }
-
-    public GetShotDetail getShotDetail() {
-        return REST_ADAPTER.create(GetShotDetail.class);
+    public RestServices getShots() {
+        return REST_ADAPTER.create(RestServices.class);
     }
 
 
-    public interface GetPopularShots {
+    public interface RestServices {
         @GET("/shots/popular")
-        Page getWith(
-                @Query("page") int pageNumber
+        void getPopularShotsWith(
+                @Query("page") int pageNumber,
+                Callback<Page> callbackImage
         );
-    }
 
-
-    public interface GetShotDetail {
         @GET("/shots/{shot}")
-        Shot getWith(
-                @Path("shot") long shot
+        void getShotDetailWith(
+                @Path("shot") long shot,
+                Callback<Shot> callbackImageShot
         );
     }
+
 
 }

@@ -75,15 +75,15 @@ public class ShotAdapter extends PagingBaseAdapter<Shot> {
 
         Shot row_pos = getItem(position);
 
-        if(row_pos.getImage_400_url()!=null && !row_pos.getImage_400_url().equals("")) {
+        if(row_pos.getImage400Url()!=null && !row_pos.getImage400Url().equals("")) {
             mPicasso.with(context)
-                    .load(row_pos.getImage_400_url())
+                    .load(row_pos.getImage400Url())
                     .into(holder.ivShot);
         }else{
 
-            if(row_pos.getImage_url() !=null && !row_pos.getImage_url().equals("")) {
+            if(row_pos.getImageUrl() !=null && !row_pos.getImageUrl().equals("")) {
                 mPicasso.with(context)
-                        .load(row_pos.getImage_url())
+                        .load(row_pos.getImageUrl())
                         .into(holder.ivShot);
             }else {
                 mPicasso.with(context)
@@ -96,8 +96,8 @@ public class ShotAdapter extends PagingBaseAdapter<Shot> {
         }else{
             holder.tvShotTitle.setText(context.getResources().getString(R.string.noShotTitle));
         }
-        if(row_pos.getViews_count()>=0) {
-            holder.tvShotViewNumber.setText(String.valueOf(row_pos.getViews_count()));
+        if(row_pos.getViewsCount() >=0) {
+            holder.tvShotViewNumber.setText(String.valueOf(row_pos.getViewsCount()));
         }else{
             holder.tvShotViewNumber.setText("0");
         }
